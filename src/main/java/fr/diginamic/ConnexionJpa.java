@@ -10,7 +10,7 @@ public class ConnexionJpa {
 	public static void main (String [] args) {
 		//Créer une instance d’entityManagerFactory
 		//Créer une instance d’entityManager
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("region");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("recensement");
 		EntityManager em = entityManagerFactory.createEntityManager();
 		
 		EntityTransaction transaction = em.getTransaction();
@@ -25,7 +25,7 @@ public class ConnexionJpa {
 		
 		
 		//Insérer une nouvelle région en base de données
-		Region h= new Region();
+		Region h = new Region();
 		h.setId(3);
 		h.setRegion("Ile-de-France");
 		em.persist(h);
