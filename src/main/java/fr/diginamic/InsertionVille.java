@@ -49,8 +49,16 @@ public class InsertionVille {
 				t.setDernierRecensementDate(d);
 				t.setCategorie(Categorie.GRANDE);
 				t.setRegion(r);
-				
 				em.persist(t);
+				
+
+				//creation relation manyTomany
+				Habitant alice = new Habitant();
+				alice.setNom("fanfan");
+				alice.setPrenom("alice");
+				em.persist(alice);
+				
+				 t.getHabitants().add(alice);
 				
 				//liste de villes
 				

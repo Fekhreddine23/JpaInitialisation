@@ -26,7 +26,7 @@ public class ConnexionJpa {
 		
 		//Insérer une nouvelle région en base de données
 		Region h = new Region();
-		h.setId(3);
+		//h.setId(3);
 		h.setRegion("Ile-de-France");
 		em.persist(h);
 		transaction.begin();
