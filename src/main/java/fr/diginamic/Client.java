@@ -8,38 +8,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Habitant")
-public class Habitant {
+@Table(name = "CLIENT")
+public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name = "NOM")
+
+	@Column(name = "nom") // nom
 	private String nom;
-	
-	@Column(name = "PRENOM")
+
+	@Column(name = "prenom") // nom
 	private String prenom;
-	
-	
-  //relation manytomany
-	@ManyToMany(mappedBy="habitants")
-	private List<Ville> villes = new ArrayList<Ville>(); // arraylist Ville
-	
-	public Habitant() {
-		// TODO Auto-generated constructor stub
+
+	// relations client qui a une ou plusieurs emprunts
+	@OneToMany(mappedBy = "clients")
+	private List<Emprunt> emprunts = new ArrayList<Emprunt>(); // arraylist Emprunt
+
+	public Client() {
+		// construct vide
 	}
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNom() {
@@ -58,21 +53,21 @@ public class Habitant {
 		this.prenom = prenom;
 	}
 
-	public List<Ville> getVilles() {
-		return villes;
+	public List<Emprunt> getEmprunts() {
+		return emprunts;
 	}
 
-	public void setVilles(List<Ville> villes) {
-		this.villes = villes;
+	public void setEmprunts(List<Emprunt> emprunts) {
+		this.emprunts = emprunts;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Habitant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", villes=" + villes + "]";
+		return "CLIENT [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
 	}
-
-	 
-
-	 
 
 }
